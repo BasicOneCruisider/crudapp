@@ -13,7 +13,7 @@
         </div>
     </div>
     @if ($message = Session::get('success'))
-        <div class="alert alert-sucess">
+        <div class="alert alert-success">
             <p>{{ $message }}</p>
         </div>
     @endif
@@ -33,14 +33,18 @@
                 <td> {{ $product->detail }} </td>
                 <td>
                     <form action="{{ route('products.destroy', $product->id) }}" method="POST"> 
+                        {{-- afficher:  1er argument la page d'affichage , 2eme argument l'id passé ds l'url pour le voir --}}
                         <a href="{{ route('products.show', $product->id) }}" class="btn btn-info">show</a>
-                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info">edit</a>
+                        {{-- modifier :1er argument la page d'affichage , 2eme argument l'id passé ds l'url pour le modifier--}}
+                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary">edit</a>
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger">Delete</button>
+                        {{-- effacer:1er argument la page d'affichage , 2eme argument l'id passé ds l'url pour l'effacer --}}
+                        <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
                 </td>
-            </tr>@endforeach
+            </tr>
+        @endforeach
     </table>
     {{  $products->links() }}
     

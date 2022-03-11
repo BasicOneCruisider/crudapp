@@ -9,7 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Laravel CRUD APPLICATION</h1>(layout.blade.php)
+     
     <div class="container">
         
         <br>

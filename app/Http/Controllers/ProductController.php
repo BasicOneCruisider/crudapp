@@ -51,7 +51,7 @@ class ProductController extends Controller
         Product::create($request->all());
 
         //rediriger le client
-        return redirect()->route('products.index')->with('sucess', 'article créer , bien joué');
+        return redirect()->route('products.index')->with('success', 'article créer , bien joué');
     }
 
     /**
@@ -60,9 +60,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        // on affiche la page avec l'article choisit avec son id
+        return view('products.show', compact('product'));
     }
 
     /**
