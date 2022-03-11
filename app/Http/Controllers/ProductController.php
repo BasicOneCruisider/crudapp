@@ -62,7 +62,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // on affiche la page avec l'article choisit avec son id
+        // on affiche la page avec l'article choisit avec
+        //  son id=$product ce qui permet l'affichage de $product-name
+        //   dans le fichier show.blade.php
         return view('products.show', compact('product'));
     }
 
@@ -72,9 +74,10 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Product $product) // affiche le formulaire 
     {
         //
+        return view('products.edit', compact('product'));
     }
 
     /**
@@ -84,9 +87,20 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Product $product)
     {
         //
+         //valider les champs 
+         $request->validate([
+            'name'=>'required',
+            'detail'=> 'required'
+        ]);
+
+        //creer un nouveeau produits 
+        $product->update($request->all());
+
+        //rediriger le client
+        return redirect()->route('products.index')->with('success', 'article MODIFIé , bien joué');
     }
 
     /**

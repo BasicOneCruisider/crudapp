@@ -8,6 +8,7 @@
     <div class="col-xs-12 col-m-12 col-md-12">
         <div class=" form-group" >
             <strong>Name:</strong>
+            {{-- on injecte la valeur $product de la function show ds le fichier postcontroller --}}
             {{ $product->name }} 
         </div>
     </div>
