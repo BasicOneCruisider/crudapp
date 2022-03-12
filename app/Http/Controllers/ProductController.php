@@ -109,8 +109,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        //effacer article
+        $product->delete();
+    
+        //rediriger vers la page de success
+        return redirect()->route('products.index')->with('success', 'article '. $product->name.' SOUPRIMé , bien jouhé');
+
     }
 }
